@@ -59,6 +59,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusTraversalPolicyProvider(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -68,21 +69,21 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         MainPanel.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CEU.jpg"))); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gif Redimensionado2.gif"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(469, 602));
+        jLabel1.setMinimumSize(new java.awt.Dimension(469, 602));
+        jLabel1.setPreferredSize(new java.awt.Dimension(469, 602));
 
         javax.swing.GroupLayout EmptyLayout = new javax.swing.GroupLayout(Empty);
         Empty.setLayout(EmptyLayout);
         EmptyLayout.setHorizontalGroup(
             EmptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmptyLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
         EmptyLayout.setVerticalGroup(
             EmptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmptyLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 469, Short.MAX_VALUE)
         );
 
         MainPanel.add(Empty, "empty");
@@ -90,6 +91,8 @@ public class Tela_Principal extends javax.swing.JFrame {
         MainPanel.add(painelConsultarProduto1, "TelaDeAlteracao");
         MainPanel.add(painelCategoria1, "CategoriaEdicao");
         MainPanel.add(painelCadastroCliente1, "CadastrarCliente");
+
+        jMenuBar1.setBackground(new java.awt.Color(161, 255, 255));
 
         BarraProduto.setText("Produto");
 
