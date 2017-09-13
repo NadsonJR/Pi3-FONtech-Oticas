@@ -41,12 +41,16 @@ public class Tela_Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         MainPanel = new javax.swing.JPanel();
+        painelLogin1 = new ProjetoPI3.Interface_Login.painelLogin();
         Empty = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         painelCadastrarProduto1 = new ProjetoPI3.Inteface_Produto.PainelCadastrarProduto();
         painelConsultarProduto1 = new ProjetoPI3.Inteface_Produto.PainelConsultarProduto();
         painelCategoria1 = new ProjetoPI3.Inteface_Produto.PainelCategoria();
         painelCadastroCliente1 = new ProjetoPI3.Interface_Cliente.painelCadastroCliente();
+        painelRelatorio1 = new ProjetoPI3.Interface_Relatorio.painelRelatorio();
+        painelVenda1 = new ProjetoPI3.Interface_Venda.painelVenda();
+        painelCadastroUsuarios2 = new ProjetoPI3.Interface_Usuarios.painelCadastroUsuarios();
         jMenuBar1 = new javax.swing.JMenuBar();
         BarraProduto = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -55,6 +59,12 @@ public class Tela_Principal extends javax.swing.JFrame {
         BarraClient = new javax.swing.JMenu();
         CadastrarCliente = new javax.swing.JMenuItem();
         ConsultarCliente = new javax.swing.JMenuItem();
+        Vendas = new javax.swing.JMenu();
+        EfetuarVendas = new javax.swing.JMenuItem();
+        BarraRelatorio = new javax.swing.JMenu();
+        MenuRelatorio = new javax.swing.JMenuItem();
+        jMenuUsuarios = new javax.swing.JMenu();
+        jUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
@@ -68,6 +78,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         });
 
         MainPanel.setLayout(new java.awt.CardLayout());
+        MainPanel.add(painelLogin1, "card7");
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gif Redimensionado2.gif"))); // NOI18N
@@ -79,11 +90,13 @@ public class Tela_Principal extends javax.swing.JFrame {
         Empty.setLayout(EmptyLayout);
         EmptyLayout.setHorizontalGroup(
             EmptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+            .addGroup(EmptyLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         EmptyLayout.setVerticalGroup(
             EmptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 469, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 509, Short.MAX_VALUE)
         );
 
         MainPanel.add(Empty, "empty");
@@ -91,8 +104,12 @@ public class Tela_Principal extends javax.swing.JFrame {
         MainPanel.add(painelConsultarProduto1, "TelaDeAlteracao");
         MainPanel.add(painelCategoria1, "CategoriaEdicao");
         MainPanel.add(painelCadastroCliente1, "CadastrarCliente");
+        MainPanel.add(painelRelatorio1, "TelaRelatorio");
+        MainPanel.add(painelVenda1, "TelaVendas");
+        MainPanel.add(painelCadastroUsuarios2, "TelaUsuarios");
 
         jMenuBar1.setBackground(new java.awt.Color(161, 255, 255));
+        jMenuBar1.setForeground(new java.awt.Color(153, 255, 255));
 
         BarraProduto.setText("Produto");
 
@@ -137,13 +154,49 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(BarraClient);
 
+        Vendas.setText("Vendas");
+
+        EfetuarVendas.setText("Efetuar");
+        EfetuarVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EfetuarVendasActionPerformed(evt);
+            }
+        });
+        Vendas.add(EfetuarVendas);
+
+        jMenuBar1.add(Vendas);
+
+        BarraRelatorio.setText("Relatório");
+
+        MenuRelatorio.setText("Emitir");
+        MenuRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioActionPerformed(evt);
+            }
+        });
+        BarraRelatorio.add(MenuRelatorio);
+
+        jMenuBar1.add(BarraRelatorio);
+
+        jMenuUsuarios.setText("Usuários");
+
+        jUsuarios.setText("Cadastrar");
+        jUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUsuariosActionPerformed(evt);
+            }
+        });
+        jMenuUsuarios.add(jUsuarios);
+
+        jMenuBar1.add(jMenuUsuarios);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,6 +247,35 @@ public class Tela_Principal extends javax.swing.JFrame {
                 card.show(MainPanel, "empty");
             }
         });
+        painelRelatorio1.getCancelar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout card = (CardLayout) MainPanel.getLayout();
+                card.show(MainPanel, "empty");
+            }
+        });
+        painelVenda1.getCancelar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout card = (CardLayout) MainPanel.getLayout();
+                card.show(MainPanel, "empty");
+            }
+        });
+        painelCadastroUsuarios2.getCancelar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout card = (CardLayout) MainPanel.getLayout();
+                card.show(MainPanel, "empty");
+            }
+        });
+        painelLogin1.getCancelar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout card = (CardLayout) MainPanel.getLayout();
+                card.show(MainPanel, "empty");
+            }
+        });
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void CategoriaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoriaMenuActionPerformed
@@ -205,6 +287,21 @@ public class Tela_Principal extends javax.swing.JFrame {
          CardLayout Card = (CardLayout) MainPanel.getLayout();
         Card.show(MainPanel, "CadastrarCliente");   // TODO add your handling code here:
     }//GEN-LAST:event_CadastrarClienteActionPerformed
+
+    private void MenuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioActionPerformed
+        CardLayout Card = (CardLayout) MainPanel.getLayout();
+        Card.show(MainPanel, "TelaRelatorio"); 
+    }//GEN-LAST:event_MenuRelatorioActionPerformed
+
+    private void EfetuarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EfetuarVendasActionPerformed
+        CardLayout Card = (CardLayout) MainPanel.getLayout();
+        Card.show(MainPanel, "TelaVendas"); 
+    }//GEN-LAST:event_EfetuarVendasActionPerformed
+
+    private void jUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsuariosActionPerformed
+        CardLayout Card = (CardLayout) MainPanel.getLayout();
+        Card.show(MainPanel, "TelaUsuarios");
+    }//GEN-LAST:event_jUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,18 +330,28 @@ public class Tela_Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu BarraClient;
     private javax.swing.JMenu BarraProduto;
+    private javax.swing.JMenu BarraRelatorio;
     private javax.swing.JMenuItem CadastrarCliente;
     private javax.swing.JMenuItem CategoriaMenu;
     private javax.swing.JMenuItem ConsultarCliente;
+    private javax.swing.JMenuItem EfetuarVendas;
     private javax.swing.JPanel Empty;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JMenuItem MenuRelatorio;
+    private javax.swing.JMenu Vendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu jMenuUsuarios;
+    private javax.swing.JMenuItem jUsuarios;
     private ProjetoPI3.Inteface_Produto.PainelCadastrarProduto painelCadastrarProduto1;
     private ProjetoPI3.Interface_Cliente.painelCadastroCliente painelCadastroCliente1;
+    private ProjetoPI3.Interface_Usuarios.painelCadastroUsuarios painelCadastroUsuarios2;
     private ProjetoPI3.Inteface_Produto.PainelCategoria painelCategoria1;
     private ProjetoPI3.Inteface_Produto.PainelConsultarProduto painelConsultarProduto1;
+    private ProjetoPI3.Interface_Login.painelLogin painelLogin1;
+    private ProjetoPI3.Interface_Relatorio.painelRelatorio painelRelatorio1;
+    private ProjetoPI3.Interface_Venda.painelVenda painelVenda1;
     // End of variables declaration//GEN-END:variables
 }

@@ -55,6 +55,10 @@ public class PainelConsultarProduto extends javax.swing.JPanel {
             .addGap(0, 339, Short.MAX_VALUE)
         );
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         labelConsulta.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labelConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelConsulta.setText("Consulta");
@@ -82,12 +86,16 @@ public class PainelConsultarProduto extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(Tabela);
 
+        Excluir.setBackground(new java.awt.Color(153, 255, 255));
         Excluir.setText("Excluir");
 
+        Alterar.setBackground(new java.awt.Color(153, 255, 255));
         Alterar.setText("Alterar");
 
+        jButton2.setBackground(new java.awt.Color(153, 255, 255));
         jButton2.setText("Pesquisar");
 
+        cancelar.setBackground(new java.awt.Color(153, 255, 255));
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
